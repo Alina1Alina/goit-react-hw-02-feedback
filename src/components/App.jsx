@@ -14,6 +14,7 @@ export class App extends Component {
 
   handleIncrement = e => {
     const currentBtnValue = e.currentTarget.value;
+
     this.setState(prevState => ({
       ...prevState,
       [currentBtnValue]: prevState[currentBtnValue] + 1,
