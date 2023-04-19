@@ -33,28 +33,25 @@ export class App extends Component {
   render() {
     return (
       <Container>
-        <Section
-          title="Please leave feedback"
-          children={
-            <FeedbackOptions
+        <Section title="Please leave feedback">
+          
+          <FeedbackOptions
               onLeaveFeedback={this.handleIncrement}
               options={this.state}
             />
-          }
-        />
+          
+        </Section>
         {!this.countTotalFeedback() ? (
           <Notification message="There is no feedback" />
         ) : (
-          <Section
-            title="Statistics"
-            children={
-              <Statistics
+          <Section title="Statistics"> 
+            <Statistics
                 stats={this.state}
                 total={this.countTotalFeedback()}
                 positiveFeedback={this.countPositiveFeedbackPercentage()}
               />
-            }
-          />
+            
+          </Section>
         )}
       </Container>
     );

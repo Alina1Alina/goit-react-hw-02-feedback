@@ -1,31 +1,33 @@
-import { Component } from "react";
 import { StatisticsContainer } from "./FeedbackStyled";
 import { nanoid } from "nanoid";
+import PropTypes from 'prop-types';
 
 
-export class Statistics extends Component {
-  static defaultProps = {
-    stats: { good: 0, bad: 0, neutral: 0 },
-    total: 0,
-    positiveFeedback: 0,
-  };
-  render() {
+export const Statistics = ({ stats, total, positiveFeedback})=> {
     return (
       <div>
         <StatisticsContainer>
-          {Object.entries(this.props.stats).map(([key, value]) => {
+          {Object.entries(stats).map(([key, value]) => {
             return (
-              <span key={nanoid}>
+              <span key={nanoid()}>
                 {key}: {value}
               </span>
             );
           })}
-          <span>Total: {this.props.total}</span>
-          <span>Positive feedback: {this.props.positiveFeedback}%</span>
+          <span>Total: {total}</span>
+          <span>Positive feedback: {positiveFeedback}%</span>
         </StatisticsContainer>
       </div>
     );
   }
+
+
+Statistics.propTypes = {
+  stats: PropTypes.objectOf(PropTypes.number.isRequired
+  ),
+ 
+  total: PropTypes.number.isRequired,
+  positiveFeedback: PropTypes.number.isRequired,
 }
 
 

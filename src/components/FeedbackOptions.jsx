@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { ButtonsContainer, Button } from './FeedbackStyled';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 export class FeedbackOptions extends Component {
   render() {
@@ -9,9 +10,9 @@ export class FeedbackOptions extends Component {
       <ButtonsContainer>
         {keys.map(key => (
           <Button
-            key={nanoid}
+            key={nanoid()}
             value={key}
-            onClick={e => this.props.onLeaveFeedback(e)}
+            onClick={this.props.onLeaveFeedback}
             type="button"
           >
             {key}
@@ -21,3 +22,9 @@ export class FeedbackOptions extends Component {
     );
   }
 }
+
+FeedbackOptions.propTypes = {
+onLeaveFeedback: PropTypes.func.isRequired,
+options: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
+}
+
